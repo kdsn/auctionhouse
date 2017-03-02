@@ -1,0 +1,12 @@
+# Search for implicit filename pattern match
+Options -MultiViews
+
+RewriteEngine On
+
+# Set the base
+RewriteBase /
+
+# Sends the params to the $_GET['url'] variabel
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ /index.php/?url=$1 [QSA,L]

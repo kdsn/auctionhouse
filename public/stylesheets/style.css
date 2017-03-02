@@ -1,0 +1,302 @@
+.tmp {
+    border: 1px solid black;
+    height: 100px;
+    width: 250px;
+    margin-top: 7px;
+    background-color: lightgray;
+}
+
+/* Menu & navigation
+-------------------------------------------------- */
+.nav-color {
+    background-color: #4285f4 !important;
+    border-color: #4285f4 !important;
+    background-image: url(../images/bg-blue.png);
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover !important;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bg-blue.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bg-blue.png', sizingMethod='scale')";
+
+}
+
+#top-menu{
+    border-radius: 0px;
+    min-height: 40px!important;
+    max-height: 40px!important;
+    margin-bottom: 0px;
+}
+#top-menu > div > div > ul > li > a {
+    padding: 9px 20px 10px 20px;
+    color: #f5f5f5;
+}
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:focus,
+.navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: rgba(8, 8, 8, 0.1);
+}
+.fa-icon {
+    margin-right:7px;
+    font-size: 18px !important;
+
+    opacity: 0.5;
+    filter: Alpha(opacity=50);
+}
+
+#top-menu > div > div > ul > li {
+    -webkit-box-shadow: inset -35px 0px 70px -40px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset -35px 0px 70px -40px rgba(0,0,0,0.5);
+    box-shadow: inset -35px 0px 70px -40px rgba(0,0,0,0.5);
+}
+.main-nav {
+    height: 115px;
+}
+.main-nav > div > ul > li > a {
+    display: inline-block;
+    line-height: 115px;
+    padding: 0 20px;
+    vertical-align: middle;
+    font-size: larger;
+    border-radius: 0px;
+}
+
+.title-area {
+    height: 80px;
+}
+h1.title {
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+.breadcrumb {
+    background-color: unset !important;
+    color: #FFF;
+    padding: 7px 15px 7px 0px;
+    margin-bottom: 0px;
+}
+ol.breadcrumb > li > a{
+    color: #FFF;
+}
+.breadcrumb>.active {
+    color: #BBB;
+}
+
+    /* Sticky footer styles
+    -------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 425px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 425px;
+}
+.bg-blue {
+    background-color: #4285f4 !important;
+    border-color: #4285f4 !important;
+    background-image: url(../images/bg-blue.png);
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover !important;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bg-blue.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bg-blue.png', sizingMethod='scale')";
+}
+
+.bg-copy {
+    background-image: url("../images/copyright-bg.jpg");
+    color: #b9b9b9;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+.carousel-img {
+    max-height: 300px;
+    margin: auto;
+}
+.high-225 {
+    height: 225px;
+    max-width: 100%;
+    margin:0px;
+}
+.high-150 {
+    height: 150px;
+    max-width: 100%;
+    margin:0px;
+}
+.high-50 {
+    height: 50px;
+    max-width: 100%;
+    margin:0px;
+}
+.lh50 {
+    line-height: 50px;
+}
+
+.widget-title {
+    color: #3a4653;
+    padding: 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #d2d5da;
+}
+.footer-title {
+    font-weight: bold;
+    color:#FFF;
+    border:none;
+    padding: 10px 25px;
+    width: 100%;
+    margin: 20px auto;
+    background-color: #365e8a;
+}
+
+.dropshadow {
+    -webkit-box-shadow: 0px 5px 30px 5px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 5px 30px 5px rgba(0,0,0,0.55);
+    box-shadow: 0px 5px 30px 5px rgba(0,0,0,0.55);
+}
+
+.fa-4 {
+    font-size: 4.5em !important;
+}
+.fa-2 {
+    font-size: 2.5em !important;
+    width: 100%;
+    text-align: center;
+    margin: 20px auto;
+ }
+.fa-stack{
+    width: 3.25em !important;
+    height: 2.25em !important;
+}
+
+.fa-inverse{
+    opacity: 0.3;
+    filter: Alpha(opacity=30);
+}
+.fa-norm {
+    opacity: 0.7;
+    filter: Alpha(opacity=70);
+    text-shadow: 0px 0px 5px #444;
+}
+
+.sm-space-top {
+    margin-top: 20px;
+}
+.sm-space {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.md-space {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.sm-space-top-bottom {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.form-part {
+    display: none;
+}
+
+.add-form-part:checked + .form-part{
+    display: initial;
+}
+
+.no-gutter{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.no-gutter-right{
+    padding-right: 0px !important;
+}
+.no-gutter-left{
+    padding-left: 0px !important;
+}
+
+.lead-smaller{
+    font-size: 18px;
+}
+
+span.lead-text{
+    display: inline-block;
+    width: 135px !important;
+}
+a.font-fff{
+    color: #fff;
+}
+a.font-fff:hover{
+    color: #AFAFAF;
+    text-decoration: none;
+}
+
+/* Switch
+-------------------------------------------------- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

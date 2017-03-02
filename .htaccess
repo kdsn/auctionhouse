@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Set domain variabel
+RewriteRule (.*) $1 [E=HOSTNAME_ENV:auctionhouse.dev]
+
+# Map site to /public
+RewriteRule ^$ /public/ [L]
+
+# Map site/x to /public/x unless there is a x ind the web root
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1
+
+# Add trailing slash to directories within /public
+RewriteCond %{SCRIPT_FILENAME} -d
+RewriteRule ^public/(.*[^/])$ https://%{ENV:HOSTNAME_ENV}/$1/ [R=301]
