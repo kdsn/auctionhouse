@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             if ($validation->passed())
             {
                 $user->login([
-                    'user'  => filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING),
+                    'username'  => filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING),
                     'password' => trim($_POST['pass'])
                 ]);
             }
@@ -42,19 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             $validate = new Validate();
             $validation = $validate->check(
                 $_POST, [
-                'user' => [
+                'username' => [
                     'name' => 'Brugernavn',
                     'required' => true,
                     'min' => 2,
                     'max' => 64,
-                    'unique' => 'users'
+                    'unique' => 'USER'
                 ],
                 'email' => [
                     'name' => 'Email adresse',
                     'required' => true,
                     'min' => 2,
                     'max' => 64,
-                    'unique' => 'users_info'
+                    'unique' => 'USER_INFO'
                 ],
                 'Adgangskode' => [
                     'name' => 'Adgangskode',
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             {
 
                 $user->create([
-                    'user'  => filter_var(trim($_POST['user']), FILTER_SANITIZE_STRING),
+                    'user'  => filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING),
                     'email' => filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL),
                     'password' => trim($_POST['Adgangskode'])
                 ]);
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             {
                 echo $twig->render('login.view.php', array(
                     'errors' => $validation->errors(),
-                    'username' => $_POST['user'],
+                    'username' => $_POST['username'],
                     'email' => $_POST['email'],
                     'token' => $_token
                 ));

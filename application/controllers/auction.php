@@ -1,7 +1,7 @@
 <?php
-if (isset (User::userData()->user))
+if (isset (User::userData()->username))
 {
-    $user = User::userData()->user;
+    $user = User::userData()->username;
 }
 else
 {

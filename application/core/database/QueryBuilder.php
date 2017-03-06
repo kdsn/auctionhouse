@@ -132,4 +132,21 @@ class QueryBuilder
             //
         }
     }
+
+    /*
+     *
+     */
+
+    public function last_id()
+    {
+        try {
+
+            $last_id = $this->pdo->lastInsertId();
+            return $last_id;
+        }
+        catch(PDOException $e)
+        {
+            //
+        }
+    }
 }

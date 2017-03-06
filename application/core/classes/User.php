@@ -8,13 +8,16 @@ class User
 
         $hashed = password_hash($fields['password'], PASSWORD_BCRYPT, [App::get('config')['hashing']['cost']]);
 
-        App::get('database')->insert('users', [
-            'user'      => $fields['user'],
+        App::get('database')->insert('USER', [
+            'username'      => $fields['user'],
             'password'  => $hashed
             ]);
 
-        App::get('database')->insert('users_info', [
-            'email'      => $fields['email']
+        $last_id = App::get('database')->last_id();
+
+        App::get('database')->insert('USER_INFO', [
+            'user_id'   => $last_id,
+            'email'     => $fields['email']
         ]);
     }
 
@@ -31,12 +34,13 @@ class User
     // log user in
     public static function login($fields = [])
     {
-        $username = $fields['user'];
+        $username = $fields['username'];
         $fields['password'];
 
         $user = App::get('database')->selectWhere(
-            'users', 'user', "$username"
+            'USER', 'username', "$username"
         );
+
 
         $password = $fields['password'];
         $hash = $user[0]->password;
@@ -64,10 +68,9 @@ class User
             $user = $user[0];
 
             $userData = App::get('database')->selectWhere(
-                'users', 'id', "$user"
+                'USER', 'id', "$user"
             );
             $userData = $userData[0];
-
             return $userData;
         }
     }

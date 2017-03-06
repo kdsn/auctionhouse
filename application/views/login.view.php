@@ -48,8 +48,8 @@
                     <h3 class="panel-title lead">Register</h3>
                 </div>
                 <div class="panel-body">
-                    <label id="user">Brugernavn</label>
-                    <input type="text" name="user" id="user" class="form-control" value="{{ username }}">
+                    <label id="username">Brugernavn</label>
+                    <input type="text" name="username" id="username" class="form-control" value="{{ username }}">
                     <label for="email">Email adresse</label>
                     <input type="email" name="email" id="email" class="form-control" value="{{ email }}">
                     <label for="Adgangskode">Adgangskode</label>

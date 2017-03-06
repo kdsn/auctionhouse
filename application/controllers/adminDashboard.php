@@ -1,6 +1,6 @@
 <?php
 
-$user = User::userData()->user;
+$user = User::userData()->username;
 
 echo $twig->render('admin.dashboard.view.php', array(
     'user'      => $user,
