@@ -8,42 +8,49 @@
 {% block content %}
 
 <div class="row sm-space-top">
-    <form>
+    <form target="_self" method="post">
         <div class="col-md-6">
 
             <h2 class="lead">Betaler</h2>
             <div class="col-md-6 no-gutter-left">
                 <label>Fornavn</label>
-                <input type="text" class="form-control" value="{{ f_name }}">
+                <input type="text" name="f_name" class="form-control" value="{{ f_name }}">
             </div>
             <div class="col-md-6">
                 <label>Efternavn</label>
-                <input type="text" class="form-control" value="{{ l_name }}">
+                <input type="text" name="l_name" class="form-control" value="{{ l_name }}">
             </div>
             <div class="col-md-12 no-gutter-left">
                 <label>Adresse</label>
-                <input type="text" class="form-control" value="{{ address }}">
+                <input type="text" name="address" class="form-control" value="{{ address }}">
             </div>
             <div class="col-md-3 no-gutter-left">
                 <label>Post nr.</label>
-                <input type="text" class="form-control" value="{{ zip }}">
+                <input type="text" name="zip" class="form-control" value="{{ zip }}">
             </div>
             <div class="col-md-9">
                 <label>By</label>
-                <input type="text" class="form-control" value="{{ city }}">
+                <input type="text" name="city" class="form-control" value="{{ city }}">
             </div>
             <div class="col-md-6 no-gutter-left">
                 <label>Email</label>
-                <input type="text" class="form-control" value="{{ email }}">
+                <input type="text" name="email" class="form-control" value="{{ email }}">
             </div>
             <div class="col-md-6">
                 <label>Telefon</label>
-                <input type="text" class="form-control" value="{{ phone }}">
+                <input type="text" name="phone" class="form-control" value="{{ phone }}">
             </div>
+
+            <input type="hidden" name="token" value="{{ token }}">
+
+            <div class="sm-space-top-bottom text-center col-md-12">
+                <input type="submit" name="update" class="btn btn-default" value="Opdater">
+            </div>
+            <!--
             <div class="col-md-6 no-gutter-left">
                 <label>To faktor-autentificering</label><br>
                 <!-- Rounded switch -->
-                <label class="switch">
+                <!--<label class="switch">
                     <input type="checkbox" checked>
                     <div class="slider round"></div>
                 </label>
@@ -56,7 +63,7 @@
                     <option SELECTED>Danmark</option>
                     <option></option>
                 </select>
-            </div>
+            </div>-->
 
         </div>
 

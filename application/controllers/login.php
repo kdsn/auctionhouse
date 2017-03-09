@@ -28,6 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     'username'  => filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING),
                     'password' => trim($_POST['pass'])
                 ]);
+
+                if (isset($_SESSION['error']))
+                {
+
+                    echo $twig->render('login.view.php', array(
+                        'errors' => $validation->errors(),
+                        'error'  => $_SESSION['error'],
+                        'name'   => $_POST['username'],
+                        'token'  => $_token
+                    ));
+                    unset($_SESSION['error']);
+                }
             }
             else
             {
@@ -52,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 'email' => [
                     'name' => 'Email adresse',
                     'required' => true,
-                    'min' => 2,
+                    'min' => 6,
                     'max' => 64,
                     'unique' => 'USER_INFO'
                 ],

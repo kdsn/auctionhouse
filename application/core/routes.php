@@ -19,6 +19,8 @@ if (User::permissions('user') || User::permissions('staff') || User::permissions
 {
     $router->get('profil', '../application/controllers/profile.php');
     $router->get('logout', '../application/controllers/login.php');
+
+    $router->post('profil', '../application/controllers/profile.php');
 }
 
 // Private router, der kræver staff eller admin rettighed.

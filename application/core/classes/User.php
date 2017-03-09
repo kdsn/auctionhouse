@@ -19,11 +19,25 @@ class User
             'user_id'   => $last_id,
             'email'     => $fields['email']
         ]);
+
+        Session::put(App::get('config')['session']['session_name'], $last_id . ":" . crc32('user'));
     }
 
-    public static function updateUser()
+    public static function updateUser($fields = [])
     {
-        //
+        $field = 'user_id';
+        $user = explode(":", $_SESSION['user']);
+        $value = $user[0];
+
+        App::get('database')->update('USER_INFO', [
+            'first_name'    => $fields['f_name'],
+            'last_name'     => $fields['l_name'],
+            'address'       => $fields['address'],
+            'zip'           => $fields['zip'],
+            'city'          => $fields['city'],
+            'email'         => $fields['email'],
+            'phone'         => $fields['phone']
+        ], $field, $value);
     }
 
     public static function updatePass()
@@ -55,6 +69,10 @@ class User
             */
             Session::put(App::get('config')['session']['session_name'], $user[0]->id . ":" . crc32($user[0]->permissions));
             Redirect::to('#');
+        }
+        else
+        {
+            $_SESSION['error'] = "Brugernavn og adgangskode er ikke et match.";
         }
 
     }

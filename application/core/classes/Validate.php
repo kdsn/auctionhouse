@@ -55,6 +55,12 @@ class Validate
                             }
                             break;
 
+                            if ($check)
+                            {
+                                $this->addError("\"{$this->_name}\" er ikke unikt.");
+                            }
+                            break;
+
                         case 'matches':
                             if ($value != $source[$rule_value])
                             {

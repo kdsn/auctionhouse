@@ -9,12 +9,19 @@
 
 {% if errors %}
     {% for error in errors %}
-    <div class="alert alert-danger alert-dismissable">
+    <div class="alert alert-danger alert-dismissable sm-space-top">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Fejl!</strong> {{ error }}
     </div>
     {% endfor %}
 {% endif %}
+{% if error %}
+<div class="alert alert-danger alert-dismissable sm-space-top">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Fejl!</strong> {{ error }}
+</div>
+{% endif %}
+
 <div class="row sm-space-top">
     <div class="col-md-6">
 
