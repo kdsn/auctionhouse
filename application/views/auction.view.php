@@ -39,12 +39,12 @@
 
 <div style="margin-top: 15px" class="row">
 
-    {% for i in 0..10 %}
+    {% for auction in data %}
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
             <img src="https://pixy.org/images/placeholder.png" alt="...">
             <div class="clearfix caption">
-                <h3>Auktions Titel</h3>
+                <h3>{{ auction.title }}</h3>
                 <p>dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                 <div>
                     <div class="pull-left well-custom well well-sm">

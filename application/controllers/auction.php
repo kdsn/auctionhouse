@@ -8,8 +8,9 @@ else
     $user = null;
 }
 
-$query = QB::table('USER')->select('*')->orderBy('created_at', 'ASC');
+$query = QB::table('AUCTION')->select('*')->orderBy('created_at', 'ASC');
 
+$data = $query->get();
 
 echo $twig->render('auction.view.php', array(
     'user'      => $user,
