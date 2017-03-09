@@ -3,6 +3,7 @@
         "classmap": ["application/core", "application/core/classes" ]
     },
     "require": {
-        "twig/twig": "~2.0"
+        "twig/twig": "~2.0",
+        "usmanhalalit/pixie": "2.*@dev"
     }
 }

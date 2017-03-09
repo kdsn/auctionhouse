@@ -1,5 +1,8 @@
 <?php
 
+define("DESC",1);
+define("ASC", 2);
+
 class QueryBuilder
 {
     protected $pdo;
@@ -19,9 +22,18 @@ class QueryBuilder
      * @param $tabel
      * @return array
      */
-    public function selectAll($tabel)
+    public function selectAll($tabel, $order_by=null, $order_by_mode=null)
     {
-        $statement = $this->pdo->prepare("select * from {$tabel}");
+        $q = "select * from {$tabel}";
+
+        if($order_by && $order_by_mode){
+            if($order_by_mode==DESC)
+                $q.= " order by {$order_by_mode} DESC";
+            else if($order_by_mode==ASC)
+                $q .= " order by {$order_by_mode}";
+        }
+
+        $statement = $this->pdo->prepare($q);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_CLASS);

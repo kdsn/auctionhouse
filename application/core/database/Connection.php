@@ -4,6 +4,7 @@ class Connection
 {
     public static function make ($config)
     {
+
         try
         {
             return new PDO(
@@ -17,5 +18,6 @@ class Connection
         {
             die('Der kunne ikke oprettes forbindelse til databasen, vi beklager.');
         }
+
     }
 }
