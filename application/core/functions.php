@@ -16,3 +16,8 @@ function dd($data)
 
     echo "</pre>";
 }
+
+function getCorrectMoneyFormat($number){
+    setlocale(LC_MONETARY, 'en_DK');
+    return money_format("%.2n", $number);
+}

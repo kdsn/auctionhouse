@@ -2,7 +2,7 @@
 
 // Offentlige routes, uden begrænsninger.
 $router->get('', '../application/controllers/default.php');
-$router->get('auktioner', '../application/controllers/auction.php');
+$router->get('auktioner', '../application/controllers/auctionList.php');
 $router->get('shop', '../application/controllers/shop.php');
 $router->get('kontakt', '../application/controllers/contact.php');
 

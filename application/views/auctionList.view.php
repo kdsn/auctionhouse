@@ -24,6 +24,9 @@
         line-height: 1.42;
         border-radius: 50%;
     }
+    .thumbnail-img{
+        cursor:pointer;
+    }
 </style>
 {% endblock %}
 
@@ -42,14 +45,14 @@
     {% for auction in data %}
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-            <img src="https://pixy.org/images/placeholder.png" alt="...">
+            <img data-id='{{auction.id}}' class="thumbnail-img" src="https://pixy.org/images/placeholder.png" alt="...">
             <div class="clearfix caption">
                 <h3>{{ auction.title }}</h3>
                 <p>dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                 <div>
                     <div class="pull-left well-custom well well-sm">
                         <span>Aktuelt Bud:</span>
-                        <span class="pull-right">14.000 DKK</span>
+                        <span class="pull-right">{{ auction.start_price }} DKK</span>
                     </div>
                     <button type="button" class="pull-right btn-circle btn btn-default btn-lg">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -62,6 +65,14 @@
     {% endfor %}
 
 </div>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('.thumbnail-img').click(function (e) {
+            window.location = "/home?auction=" + $(this).attr('data-id');
+        })
+    });
+</script>
 
 
 {% endblock %}
