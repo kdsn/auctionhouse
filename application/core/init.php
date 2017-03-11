@@ -1,11 +1,16 @@
 <?php
 session_start();
 
+// Fjerner deprecated warnings
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 require '../application/core/functions.php';
 
 /** @noinspection PhpIncludeInspection */
 App::bind('config', require '../application/core/config.php');
 
+
+// skal fjernes når alle sider er genmgået for gl. qb
 App::bind('database', new QueryBuilder(
     Connection::make(App::get('config')['database'])
 ));
@@ -34,3 +39,8 @@ $pc = array(
 );
 
 new \Pixie\Connection('mysql', $pc, 'QB');
+
+if (isset($_COOKIE['user_r']) && ! isset($_SESSION['user']))
+{
+    User::cookieLogin();
+}

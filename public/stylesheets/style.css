@@ -123,6 +123,11 @@ body {
 
 /* Custom page CSS
 -------------------------------------------------- */
+
+.normal{
+    font-weight: 400;
+}
+
 .carousel-img {
     max-height: 300px;
     margin: auto;

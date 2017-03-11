@@ -24,9 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
             if ($validation->passed())
             {
+                $remember = (isset($_POST['remember']) && $_POST['remember'] === 'on') ? true : false;
+
                 $user->login([
                     'username'  => filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING),
-                    'password' => trim($_POST['pass'])
+                    'password' => trim($_POST['pass']),
+                    'remember' => $remember
                 ]);
 
                 if (isset($_SESSION['error']))

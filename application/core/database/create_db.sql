@@ -63,6 +63,24 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `c2F19B1225`.`USER_HASH`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `c2F19B1225`.`USER_HASH` ;
+
+CREATE TABLE `USER_HASH` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `remember_identifier` varchar(128) NOT NULL DEFAULT '',
+  `remember_token` varchar(128) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `fk_USERS_HASH_USERS` (`user_id`),
+  CONSTRAINT `fk_USERS_HASH_USERS` FOREIGN KEY (`user_id`) REFERENCES `USER` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+
+-- -----------------------------------------------------
 -- Table `c2F19B1225`.`PRODUCT`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `c2F19B1225`.`PRODUCT` ;

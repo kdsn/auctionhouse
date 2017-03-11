@@ -37,8 +37,9 @@
                     <input type="password" name="pass" id="pass" class="form-control">
                     <input type="hidden" name="token" value="{{ token }}">
                     <br>
-                    <input type="checkbox"> <small>Husk mig</small><br>
+                    <input type="checkbox" name="remember" id="remember"> <label for="remember" class="normal"><small>Husk mig</small></label><br>
                     <small><a href="#">Glemt din kode?</a></small>
+
                 </div>
                 <div class="panel-footer text-center">
                     <input type="submit" name="login" class="btn btn-default" value="Log ind">

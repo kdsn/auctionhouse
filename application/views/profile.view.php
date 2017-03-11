@@ -7,6 +7,15 @@
 {% endblock %}
 {% block content %}
 
+{% if errors %}
+{% for error in errors %}
+<div class="alert alert-danger alert-dismissable sm-space-top">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Fejl!</strong> {{ error }}
+</div>
+{% endfor %}
+{% endif %}
+
 <div class="row sm-space-top">
     <form target="_self" method="post">
         <div class="col-md-6">

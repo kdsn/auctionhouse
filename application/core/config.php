@@ -9,9 +9,13 @@ return [
             PDO::ATTR_ERRMODE     => PDO::ERRMODE_EXCEPTION
         ]
     ],
-    'remember' => [
-        'cookie_name'     => 'hash',
-        'cookie_expiry'   => 2592000
+    'cookie' => [
+        'secure'     => false,
+        'httponly'   => false
+    ],
+    'auth' => [
+        'cookie_name'     => 'user_r',
+        'cookie_expiry'   => (86400 * 30)
     ],
     'session' => [
         'session_name'    => 'user',
