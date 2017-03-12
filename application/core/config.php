@@ -9,6 +9,17 @@ return [
             PDO::ATTR_ERRMODE     => PDO::ERRMODE_EXCEPTION
         ]
     ],
+    'mailer' => [
+        'host'            => 'mail.dom.tld',
+        'smtpauth'        => true,
+        'username'        => 'user',
+        'password'        => 'pass',
+        'smtpsecure'      => 'tls',
+        'port'            => 587,
+        'ishtml'          => true,
+        'setfrom'         => 'sender@dom.tld',
+        'addreplyto'      => 'sender@dom.tid'
+    ],
     'cookie' => [
         'secure'     => false,
         'httponly'   => false
@@ -25,4 +36,3 @@ return [
         'cost'    => '12'
     ]
 ];
-

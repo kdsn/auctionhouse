@@ -7,7 +7,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         $user = new User();
         $_token = Token::generate();
 
-        if (isset($_REQUEST['login'])) {
+        if (isset($_REQUEST['mail_upd']))
+        {
+            $validate = new Validate();
+            $validation = $validate->check(
+                $_POST, [
+                'email' => [
+                    'name' => 'Email',
+                    'required' => true,
+                    'exists' => 'USER_INFO'
+                ]
+            ]);
+
+            if ($validation->passed())
+            {
+                User::recoverPass([
+                    'email' => filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL)
+                ]);
+            }
+            else
+            {
+                echo $twig->render('password.view.php', array(
+                    'errors' => $validation->errors(),
+                    'titel' => 'Genskab adgangskode',
+                    'update'    => 'mail_upd',
+                    'submit' => 'Genskab',
+                    'token' => $_token
+                ));
+            }
+        }
+
+        if (isset($_REQUEST['recover']))
+        {
+            $validate = new Validate();
+            $validation = $validate->check(
+                $_POST, [
+                'new_pass' => [
+                    'name' => 'Adgangskode',
+                    'required' => true,
+                    'min' => 8
+                ],
+                're_new_pass' => [
+                    'name' => 'Gentag adgangskode',
+                    'required' => true,
+                    'matches' => 'new_pass'
+                ]
+            ]);
+
+            if ($validation->passed())
+            {
+                $user->updatePass([
+                    'password' => trim($_POST['new_pass'])
+                ]);
+
+                Redirect::to('profil');
+
+            }
+            else
+            {
+                echo $twig->render('password.view.php', array(
+                    'errors' => $validation->errors(),
+                    'titel' => 'Genskab adgangskode',
+                    'update'    => 'recover',
+                    'submit' => 'Genskab',
+                    'token' => $_token
+                ));
+            }
+        }
+
+        if (isset($_REQUEST['login']))
+        {
 
             $validate = new Validate();
             $validation = $validate->check(
@@ -118,7 +187,44 @@ else
         User::logout();
         Redirect::to('#');
     }
-    else {
+    elseif (trim($_SERVER['REQUEST_URI'], '/') == "recover" || stristr(trim($_SERVER['REQUEST_URI'], '/') ,"?",true) == "recover")
+    {
+        $_token = Token::generate();
+
+        if (isset($_REQUEST['mail']))
+        {
+            if( User::lostPass() )
+            {
+                echo $twig->render('password.view.php', array(
+                    'titel' => 'Genskab adgangskode',
+                    'update'    => 'recover',
+                    'submit' => 'Genskab',
+                    'token' => $_token
+                ));
+            }
+            else
+            {
+                echo $twig->render('password.view.php', array(
+                    'error' => 'Der var en fejl, prøv igen.',
+                    'titel' => 'Genskab adgangskode',
+                    'update'    => 'mail_upd',
+                    'submit' => 'Genskab',
+                    'token' => $_token
+                ));
+            }
+        }
+        else
+        {
+            echo $twig->render('password.view.php', array(
+                'titel' => 'Genskab adgangskode',
+                'update'    => 'mail_upd',
+                'submit' => 'Genskab',
+                'token' => $_token
+            ));
+        }
+    }
+    else
+    {
         $_token = Token::generate();
 
         echo $twig->render('login.view.php', array(

@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+use \Pixie\Connection AS sql_connect;
+
 // Fjerner deprecated warnings
 error_reporting(E_ALL ^ E_DEPRECATED);
 
@@ -15,6 +17,7 @@ App::bind('database', new QueryBuilder(
     Connection::make(App::get('config')['database'])
 ));
 
+
 $loader = new Twig_Loader_Filesystem('../application/views');
 $twig = new Twig_Environment($loader, array(
     'debug' => true
@@ -23,7 +26,7 @@ $twig = new Twig_Environment($loader, array(
 $twig->addExtension(new Twig_Extension_Debug());
 
 // Create a connection, once only.
-$pc = array(
+$db = array(
     'driver'    => 'mysql', // Db driver
     'host'      => explode("=",App::get('config')['database']['connection'])[1],
     'database'  => App::get('config')['database']['databasename'],
@@ -38,7 +41,7 @@ $pc = array(
     ),
 );
 
-new \Pixie\Connection('mysql', $pc, 'QB');
+new sql_connect('mysql', $db, 'QB');
 
 if (isset($_COOKIE['user_r']) && ! isset($_SESSION['user']))
 {

@@ -5,13 +5,12 @@ class User
     // create user
     public static function create($fields = [])
     {
-
         $hashed = password_hash($fields['password'], PASSWORD_BCRYPT, [App::get('config')['hashing']['cost']]);
 
         App::get('database')->insert('USER', [
             'username'      => $fields['user'],
             'password'  => $hashed
-            ]);
+        ]);
 
         $last_id = App::get('database')->last_id();
 
@@ -43,7 +42,81 @@ class User
 
     public static function updatePass($fields = [])
     {
-        //
+        //update db
+
+        $hashed = password_hash($fields['password'], PASSWORD_BCRYPT, [App::get('config')['hashing']['cost']]);
+
+        if(User::lostPass() || User::isUser())
+        {
+            if(User::lostPass()) {
+                $mail = $_REQUEST['mail'];
+                $user = QB::table('USER_INFO')->where('email', $mail)->get();
+
+                $data = array(
+                    'password' => $hashed,
+                    'recover_hash' => null
+                );
+
+                QB::table('USER')->where('id', $user[0]->user_id)->update($data);
+
+
+                $user = QB::table('USER')->where('id', $user[0]->user_id)->get();
+
+                Session::put(App::get('config')['session']['session_name'], $user[0]->id . ":" . crc32($user[0]->permissions));
+            }
+        }
+        else
+        {
+            Redirect::to('403');
+        }
+    }
+
+    public static function lostPass()
+    {
+        $mail = $_REQUEST['mail'];
+        $hash = $_REQUEST['recover_hash'];
+
+        $user = QB::table('USER_INFO')->where('email', $mail)->get();
+
+        if (QB::table('USER_INFO')->where('email', $mail)->count() == 1) {
+            $user = QB::table('USER')->where('id', $user[0]->user_id)->get();
+
+            $dbt = strtotime($user[0]->updated_at);
+            $now = strtotime(date("Y-m-d H:i:s"));
+            $time = round(($now - $dbt) / 60,0);
+
+            return $user[0]->recover_hash == $hash && $time < 30 ? true : false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static function recoverPass($fields = [])
+    {
+        $recover_hash = randomHash(128, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        $mail = $fields['email'];
+
+        $user = QB::table('USER_INFO')->where('email', $mail)->get();
+        $id = $user[0]->user_id;
+        $name = $user[0]->first_name ? $user[0]->first_name : "";
+
+        $data = array(
+            'recover_hash'    => $recover_hash
+        );
+
+        QB::table('USER')->where('id', $id)->update($data);
+
+        $adr = $_SERVER['HTTP_HOST'];
+        $recover_hash = urlencode($recover_hash);
+        $link = "$adr/recover?mail=$mail&recover_hash=$recover_hash";
+
+        $subject = "Re. Genskab Adgangskode til $adr";
+        $body = "Hej $name <p>Du kan følge dette link for at genskabe din kode: <a href='$link'>$link</a></p>";
+        $altBody = "Hej $name, Du kan kopiere følgende link og sætte det i adresse feltet i din browser for at genskabe din kode. $link";
+
+        Mailer::send($fields['email'], $subject, $body, $altBody) ? "Der er nu sendt en mail med link til at genskabe din kode" : "Der opstod en fejl";
     }
 
     // log user in
@@ -53,9 +126,7 @@ class User
         $password = $fields['password'];
         $remember = $fields['remember'];
 
-        $user = App::get('database')->selectWhere(
-            'USER', 'username', "$username"
-        );
+        $user = QB::table('USER')->where('username', $username)->get();
 
         $hash = $user[0]->password;
         $id = $user[0]->id;
@@ -157,9 +228,8 @@ class User
             $user = explode(":", $_SESSION['user']);
             $user = $user[0];
 
-            $userData = App::get('database')->selectWhere(
-                'USER', 'id', "$user"
-            );
+            $userData = QB::table('USER')->where('id', $user)->get();
+
             $userData = $userData[0];
             return $userData;
         }

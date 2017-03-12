@@ -5,7 +5,6 @@ class Validate
     private $_passed = false;
     private $_errors = [];
     private $_name = null;
-    private $_db = null;
 
     public function check($source, $items = [])
     {
@@ -45,9 +44,7 @@ class Validate
                             break;
 
                         case 'unique':
-                            $check = App::get('database')->selectCount(
-                                    "$rule_value","$item", "$value"
-                                    );
+                            $check = QB::table($rule_value)->where($item, $value)->count();
 
                             if ($check)
                             {
@@ -55,9 +52,12 @@ class Validate
                             }
                             break;
 
-                            if ($check)
+                        case 'exists':
+                            $check = QB::table($rule_value)->where($item, $value)->count();
+
+                            if (!$check == 1)
                             {
-                                $this->addError("\"{$this->_name}\" er ikke unikt.");
+                                $this->addError("\"{$this->_name}\" blev ikke fundet.");
                             }
                             break;
 

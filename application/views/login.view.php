@@ -38,7 +38,7 @@
                     <input type="hidden" name="token" value="{{ token }}">
                     <br>
                     <input type="checkbox" name="remember" id="remember"> <label for="remember" class="normal"><small>Husk mig</small></label><br>
-                    <small><a href="#">Glemt din kode?</a></small>
+                    <small><a href="recover">Glemt din kode?</a></small>
 
                 </div>
                 <div class="panel-footer text-center">

@@ -12,7 +12,11 @@ $router->post('login', '../application/controllers/login.php');
 // router der kræver man ikke er logget ind.
 if (!User::permissions('user') && !User::permissions('staff') && !User::permissions('admin'))
 {
-$router->get('login', '../application/controllers/login.php');
+    $router->get('login', '../application/controllers/login.php');
+    $router->get('recover', '../application/controllers/login.php');
+
+
+    $router->post('recover', '../application/controllers/login.php');
 }
 
 // Private router, der kræver loign.

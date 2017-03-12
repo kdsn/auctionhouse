@@ -9,5 +9,5 @@ else
 }
 
 echo $twig->render('contact.view.php', array(
-    'user'      => $user,
+    'user'      => $user
 ));
