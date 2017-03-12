@@ -69,7 +69,7 @@
 <script type="application/javascript">
     $(document).ready(function () {
         $('.thumbnail-img').click(function (e) {
-            window.location = "/home?auction=" + $(this).attr('data-id');
+            window.location = "/auktion?auction_id=" + $(this).attr('data-id');
         })
     });
 </script>
