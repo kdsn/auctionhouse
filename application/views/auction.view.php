@@ -59,6 +59,7 @@
 
 <input id="price_jump_hidden" type="hidden" value="{{ price_jump }}">
 <input id="auction_end_date_hidden" type="hidden" value="{{ auction_end_date }}">
+<input id="minimum_bid_price_hidden" type="hidden" value="{{ minimum_bid_price }}">
 
 
 <div id="auction-container" class="row">
@@ -93,15 +94,20 @@
         </div>
         <div style="margin-top: 10px" class="row">
             <div class="col-md-9">
-                <p id="countdown-text" class="pull-left">Tid tilbage af auktionen: 9 dage 7 timer 13 minutter</p>
+                <p id="countdown-text" class="pull-left">Tid tilbage af auktionen:</p>
             </div>
             <div class="col-md-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" value="{{ start_price }}">
-                    <span class="input-group-btn">
-                        <button id="bidBtn" class="btn btn-default" type="button">Byd!</button>
+                <form target="_self" method="post">
+                    <input type="hidden" name="auction_id" value="{{ auction_id }}">
+                    <input type="hidden" name="action" value="bid">
+                    <div class="input-group">
+                        <input id="bid" name="bid" type="text" class="form-control" value="{{ minimum_bid_price }}">
+                        <span class="input-group-btn">
+                        <button id="bidBtn" class="btn btn-default" type="submit">Byd!</button>
                     </span>
-                </div>
+                    </div>
+                </form>
+
             </div>
         </div>
         <div style="margin-top: 10px" class="row">
@@ -170,6 +176,18 @@
 
         timer = setInterval(showRemaining, 1000);
     }
+
+    $(document).ready(function(){
+        $('#bidBtn').click(function (e) {
+            var minPrice = $('#minimum_bid_price_hidden').val();
+            var chosenPrice = $('#bid').val();
+            if(chosenPrice < minPrice){
+                e.preventDefault();
+                alert("Dit Bud skal være minimum " + minPrice + " DKK");
+            }
+
+        })
+    });
 
 </script>
 <div id="countdown"></div>

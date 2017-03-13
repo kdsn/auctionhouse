@@ -26,6 +26,8 @@ if (User::permissions('user') || User::permissions('staff') || User::permissions
     $router->get('logout', '../application/controllers/login.php');
 
     $router->post('profil', '../application/controllers/profile.php');
+
+    $router->post('auktion', '../application/controllers/auction.php');
 }
 
 // Private router, der kræver staff eller admin rettighed.

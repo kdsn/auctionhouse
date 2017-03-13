@@ -17,4 +17,23 @@ class Auction
        return QB::table('AUCTION')->select('*')->where('id','=',$auction_id)->limit(1)->get();
     }
 
+    public static function makeBid($auction_id, $bid_price){
+
+        $auction = self::getAuction($auction_id);
+
+        if($bid_price < ($auction[0]->start_price + $auction[0]->jump_price)){
+
+            return false;
+
+        }else{
+
+            return true;
+
+        }
+
+
+
+    }
+
+
 }
