@@ -14,7 +14,7 @@ class Auction
     }
 
     public static function getAuction($auction_id){
-       return QB::table('AUCTION')->select('*')->where('id','=',$auction_id)->limit(1);
+       return QB::table('AUCTION')->select('*')->where('id','=',$auction_id)->limit(1)->get();
     }
 
 }
