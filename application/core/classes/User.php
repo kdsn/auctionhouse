@@ -246,6 +246,22 @@ class User
         Redirect::to('#');
     }
 
+    // user id
+    public static function id()
+    {
+        if (isset($_SESSION['user']))
+        {
+            $user = explode(":", $_SESSION['user']);
+            $user = $user[0];
+        }
+        else
+        {
+            $user = null;
+        }
+
+        return $rights == $user ? true : false;
+    }
+
     // user permissions
     public static function permissions($rights)
     {
