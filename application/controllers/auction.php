@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         if($_POST['action'] == 'bid'){
            if(Auction::makeBid($_POST['auction_id'],$_POST['bid'])){
-                echo "success";
+                header("location: /auktion?auction_id=".$_POST['auction_id']);
            }
         }
 

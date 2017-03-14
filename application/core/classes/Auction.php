@@ -17,7 +17,7 @@ class Auction
        return QB::table('AUCTION')->select('*')->where('id','=',$auction_id)->limit(1)->get();
     }
 
-    public static function makeBid($auction_id, $bid_price){
+    public static function makeBid($auction_id, $bid_price, $user_id){
 
         $auction = self::getAuction($auction_id);
 
@@ -26,6 +26,18 @@ class Auction
             return false;
 
         }else{
+
+            QB::table('AUCTION')->where('id', "=", $auction_id)->update(array('start_price' => $bid_price));
+
+            //dd(User::id());
+
+
+            QB::table('AUCTION_BID')->insert(array(
+                'auction_id' => $auction_id,
+                'bid_owner_user_id' => User::id(),
+                'bid_price' => $bid_price
+            ));
+
 
             return true;
 
