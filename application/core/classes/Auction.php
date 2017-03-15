@@ -17,7 +17,7 @@ class Auction
        return QB::table('AUCTION')->select('*')->where('id','=',$auction_id)->limit(1)->get();
     }
 
-    public static function makeBid($auction_id, $bid_price, $user_id){
+    public static function makeBid($auction_id, $bid_price){
 
         $auction = self::getAuction($auction_id);
 
@@ -28,9 +28,6 @@ class Auction
         }else{
 
             QB::table('AUCTION')->where('id', "=", $auction_id)->update(array('start_price' => $bid_price));
-
-            //dd(User::id());
-
 
             QB::table('AUCTION_BID')->insert(array(
                 'auction_id' => $auction_id,
@@ -44,6 +41,18 @@ class Auction
         }
 
 
+
+    }
+
+    public static function getImages($auction_id){
+
+        $data = QB::table('AUCTION_IMAGE')->select('*')->where('auction_id','=',$auction_id)->get();
+
+        if(count($data) <= 0){
+            $data[0] = (object)array('image' => '/public/images/placeholder.png');
+        }
+
+        return $data;
 
     }
 

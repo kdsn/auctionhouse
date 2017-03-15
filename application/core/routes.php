@@ -41,6 +41,7 @@ if (User::permissions('staff') || User::permissions('admin'))
 if (User::permissions('admin'))
 {
     $router->get('test', '../application/controllers/adminDashboard.php');
+    $router->get('deleteAuction', '../application/controllers/deleteAuction.php');
 }
 
 // Fejl router.

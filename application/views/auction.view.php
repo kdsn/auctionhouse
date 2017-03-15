@@ -67,7 +67,7 @@
     <div class="col-md-8">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="pull-left">Auktion Title</h3>
+                <h3 class="pull-left">{{ title }}</h3>
                 <div class="actual-bid pull-right">
                     <h4>Aktuelt Bud</h4>
                     <h4>{{ start_price_formatted }} DKK</h4>
@@ -132,10 +132,19 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <a href="#" class="thumbnail">
-                    <img data-id='' class="thumbnail-img" src="https://pixy.org/images/placeholder.png" alt="...">
+                <a class="thumbnail">
+                    <img data-id='' style="" class="thumbnail-img" src="{{ primary_image }}" />
                 </a>
             </div>
+        </div>
+        <div class="row">
+            {% for image in images %}
+            <div class="col-xs-3 col-md-3">
+                <a class="thumbnail">
+                    <img data-id='' style="" class="thumbnail-img" src="{{ image.image }}" />
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
 

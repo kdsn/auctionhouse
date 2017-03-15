@@ -26,6 +26,7 @@
     }
     .thumbnail-img{
         cursor:pointer;
+        width: 100%;
     }
 </style>
 {% endblock %}
@@ -45,10 +46,10 @@
     {% for auction in data %}
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-            <img data-id='{{auction.id}}' class="thumbnail-img" src="https://pixy.org/images/placeholder.png" alt="...">
+            <img data-id='{{auction.id}}' style="height:350px" class="thumbnail-img" src="{{ auction.image }}" alt="...">
             <div class="clearfix caption">
                 <h3>{{ auction.title }}</h3>
-                <p>dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <p style="min-height: 80px;">{{ auction.description }}</p>
                 <div>
                     <div class="pull-left well-custom well well-sm">
                         <span>Aktuelt Bud:</span>
