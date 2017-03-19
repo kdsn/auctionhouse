@@ -29,19 +29,19 @@
 
             <div class="col-md-12 no-gutter-left">
                 <label>Titel</label>
-                <input type="text" name="title" class="form-control" value="{{ f_name }}">
+                <input type="text" name="title" class="form-control" value="{{ title }}">
             </div>
             <div class="col-md-6 no-gutter-left">
                 <label>Start Pris</label>
-                <input type="text" name="start_price" class="form-control" value="{{ l_name }}">
+                <input type="text" name="start_price" class="form-control" value="{{ start_price }}">
             </div>
             <div class="col-md-6">
                 <label>Minimum Buds Tillæg</label>
-                <input type="text" name="bid_jump" class="form-control" value="{{ address }}">
+                <input type="text" name="bid_jump" class="form-control" value="{{ bid_jump }}">
             </div>
             <div class="col-md-6 no-gutter-left">
                 <label>Auktions afslutningsdag</label>
-                <input id="dpicker" type="text" name="auction_end_date" placeholder="mm/dd/yy" class="form-control" value="{{ address }}">
+                <input id="dpicker" type="text" name="auction_end_date" placeholder="mm/dd/yy" class="form-control" value="{{ auction_end_date }}">
             </div>
             <div class="col-md-12 no-gutter-left">
                 <label>Billed 1</label>
@@ -62,7 +62,7 @@
 
 
             <div class="sm-space-top-bottom col-md-12">
-                <input  type="submit" name="update" class="btn btn-default pull-right " value="Opdater">
+                <input  type="submit" name="update" class="btn btn-default pull-right " value="Udfør">
             </div>
 
 
@@ -71,7 +71,7 @@
         <div class="col-md-6">
             <div class="col-md-12 no-gutter-left">
                 <label>Beskrivelse</label>
-                <textarea style="min-height: 150px" name="description" class="form-control" placeholder="Beskrivelse"></textarea>
+                <textarea style="min-height: 150px" name="description" class="form-control" placeholder="Beskrivelse">{{ desc }}</textarea>
             </div>
 
         </div>

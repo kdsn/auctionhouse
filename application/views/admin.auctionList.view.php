@@ -21,9 +21,12 @@
 <div style="margin-top: 15px" class="row">
 
     <div class="row">
-        <button type="button" class="btn btn-default btn-lg pull-right">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Opret Auktion
-        </button>
+        <a href="/createAuction">
+            <button type="button" class="btn btn-default btn-lg pull-right">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Opret Auktion
+            </button>
+        </a>
+
     </div>
 
     <div class="row">
