@@ -67,6 +67,24 @@ class Validate
                                 $this->addError("\"{$this->_name}\" skal være det samme som \"{$rule_value}\".");
                             }
                             break;
+
+                        case 'numeric':
+                            if (!is_numeric($value))
+                            {
+                                $this->addError("\"{$this->_name}\" skal være numerisk");
+                            }
+                            break;
+
+                        case 'datetime':
+
+                            $d = DateTime::createFromFormat($rule_value, $_POST['auction_end_date']);
+
+                            if (!$d)
+                            {
+                                $this->addError("\"{$this->_name}\" skal være af typen datetime");
+                            }
+                            break;
+
                     }
                 }
             }
