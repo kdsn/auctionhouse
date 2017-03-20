@@ -17,6 +17,19 @@ function dd($data)
     echo "</pre>";
 }
 
+
+/**
+ *  Eskape
+ *  Funktionen returnere en streng hvor speciel karaktere eskapes.
+ *
+ *  Modtager:   $data
+ *  Returnere:  htmlspecialchars($data)
+ **/
+function e($data)
+{
+    return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+}
+
 function randomHash($data)
 {
     $factory = new RandomLib\Factory;
