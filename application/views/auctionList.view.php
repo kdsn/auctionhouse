@@ -11,6 +11,13 @@
         display: inline-block;
         max-width: 100%;
     }
+    .row h3 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        max-width: 100%;
+    }
     .well-custom{
         margin-bottom: 0px;
         width:75%;
@@ -41,7 +48,20 @@
 
 {% block content %}
 
+
+<div class="row ">
+    <div class="col-md-9 sm-space-top"></div>
+    <div class="col-md-3 sm-space-top">
+        <div class="input-group">
+            <input placeholder="Søg på titel..." id="searchText" type="text" class="form-control">
+            <span class="input-group-btn">
+                <button id="searchBtn" class="btn btn-default" type="submit">Søg</button>
+            </span>
+        </div>
+    </div>
+</div>
 <div style="margin-top: 15px" class="row">
+
 
     {% for auction in data %}
     <div class="col-sm-6 col-md-4">
@@ -55,9 +75,9 @@
                         <span>Aktuelt Bud:</span>
                         <span class="pull-right">{{ auction.start_price }} DKK</span>
                     </div>
-                    <button type="button" class="pull-right btn-circle btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
+                        <button type="button" class="pull-right btn-circle btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
                 </div>
 
             </div>
@@ -71,7 +91,10 @@
     $(document).ready(function () {
         $('.thumbnail-img').click(function (e) {
             window.location = "/auktion?auction_id=" + $(this).attr('data-id');
-        })
+        });
+        $('#searchBtn').click(function (e) {
+            window.location = "/auktioner?search=" + $("#searchText").val();
+        });
     });
 </script>
 

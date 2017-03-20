@@ -13,6 +13,10 @@ class Auction
        return QB::table('AUCTION')->select('*')->orderBy('created_at', 'ASC')->get();
     }
 
+    public static function getLatestFromSearch($search){
+        return QB::table('AUCTION')->select('*')->orderBy('created_at', 'ASC')->where('title', 'LIKE', '%'.$search.'%')->get();
+    }
+
     public static function getAuction($auction_id){
        return QB::table('AUCTION')->select('*')->where('id','=',$auction_id)->limit(1)->get();
     }

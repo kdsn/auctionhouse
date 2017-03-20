@@ -17,9 +17,11 @@ function exitOnError($msg){
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $auction_id = null;
+    $images = array();
 
     if(!empty($_POST['auction_id'])){
         $auction_id = $_POST['auction_id'];
+        $images = Auction::getImages($auction_id);
     }
 
     /*
@@ -28,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $bid_jump = $_POST['bid_jump'];
     $auction_end_date = $_POST['auction_end_date'];
     $description = $_POST['description'];
-*/
+    */
 
 
     $validate = new Validate();
@@ -71,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if ($validation->passed())
     {
 
+        $imageAuctionId = null;
+
         if(is_null($auction_id)){
            // New auction
             $insertId = QB::table('AUCTION')->insert(array(
@@ -82,6 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 'owner_user_id' => User::id()
             ));
 
+            $imageAuctionId = $insertId;
+
         }else{
             // update auction
             QB::table('AUCTION')->where('id','=', $auction_id)->update(array(
@@ -92,8 +98,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 'description' => $description
             ));
 
+            $imageAuctionId = $auction_id;
+
+        }
 
 
+        if(count($_FILES) > 0){
+            foreach ($_FILES as $file){
+                if($file['size'] > 0){
+                    $file_size=$file['size'];
+                    $file_tmp= $file['tmp_name'];
+                    // echo $file_tmp;echo "<br>";
+
+                    //$type = pathinfo($file_tmp, PATHINFO_EXTENSION);
+                    $type = $file['type'];
+                    $data = file_get_contents($file_tmp);
+                    //$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                    $base64 = 'data:' . $type . ';base64,' . base64_encode($data);
+                    //echo "Base64 is ".$base64;
+
+                    QB::table('AUCTION_IMAGE')->insert(array(
+                        'auction_id' => $imageAuctionId,
+                        'image' => $base64
+                    ));
+
+                }else{
+                    continue;
+                }
+            }
         }
 
         Redirect::to('auktioner');
@@ -110,7 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             'start_price' => $start_price,
             'bid_jump' => $bid_jump,
             'auction_end_date' => $auction_end_date->format("m/d/Y"),
-            'desc' => $description
+            'desc' => $description,
+            'images' => $images
         ));
 
     }
@@ -124,6 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(isset($_GET['auction_id'])){
         $auction_id = $_GET['auction_id'];
         $data = Auction::getAuction($auction_id);
+        $images = QB::table('AUCTION_IMAGE')->select('*')->where('auction_id','=',$auction_id)->get();
 
         $data[0]->auction_end_date = DateTime::createFromFormat('Y-m-d H:i:s',$data[0]->auction_end_date);
 
@@ -136,6 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             'desc' => $data[0]->description,
             'title' => $data[0]->title,
             'auction_id' => $auction_id,
+            'images' => $images
         ));
     }else{
         echo $twig->render('admin.createauction.view.php', array(

@@ -37,6 +37,7 @@ if (User::permissions('staff') || User::permissions('admin'))
     $router->get('deleteAuction', '../application/controllers/deleteAuction.php');
     $router->get('createAuction','../application/controllers/createAuction.php');
     $router->post('createAuction','../application/controllers/createAuction.php');
+    $router->post('deleteAuctionImage','../application/controllers/deleteAuctionImage.php');
 }
 
 

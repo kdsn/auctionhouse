@@ -5,6 +5,15 @@
 {{ parent() }}
 
 {% endblock %}
+
+{% block header %}
+<h1 class="title">Opret/Redigér Auktion </h1>
+<ol class="breadcrumb">
+    <li><a href="#">Auktioner</a></li>
+    <li class="active">Opret/Redigér Auktion</li>
+</ol>
+{% endblock %}
+
 {% block content %}
 
 {% if errors %}
@@ -16,11 +25,6 @@
 {% endfor %}
 {% endif %}
 
-<div class="row sm-space-top">
-    <div class="col-md-12">
-        <h2 class="lead">Opret/Redigér auktion</h2>
-    </div>
-</div>
 <div class="row sm-space-top">
     <form target="_self" method="post" enctype="multipart/form-data">
         <div class="col-md-6">
@@ -74,6 +78,15 @@
                 <textarea style="min-height: 150px" name="description" class="form-control" placeholder="Beskrivelse">{{ desc }}</textarea>
             </div>
 
+            {% for image in images %}
+            <div class="col-xs-3 col-md-3 no-gutter-left sm-space-top">
+                <a id="deleteimage" data-id="{{ image.id }}" class="thumbnail">
+                    <span style="font-size: 10px" class="pull-left">Klik For at Slette</span>
+                    <span class=" pull-right glyphicon glyphicon-trash" style="margin-bottom: 5px" aria-hidden="true"></span>
+                    <img data-id='' style="" class="thumbnail-img" src="{{ image.image }}" />
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </form>
 </div>
@@ -81,6 +94,13 @@
 <script>
     $( function() {
         $( "#dpicker" ).datepicker();
+        $(".thumbnail").click(function(e){
+
+            $.post( "/deleteAuctionImage", { image_id: $(this).attr('data-id') } );
+
+            $(this).parent().fadeOut();
+
+        });
     } );
 </script>
 

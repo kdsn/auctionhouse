@@ -100,12 +100,15 @@
                 <form target="_self" method="post">
                     <input type="hidden" name="auction_id" value="{{ auction_id }}">
                     <input type="hidden" name="action" value="bid">
+                    {% if user %}
                     <div class="input-group">
                         <input id="bid" name="bid" type="text" class="form-control" value="{{ minimum_bid_price }}">
                         <span class="input-group-btn">
                         <button id="bidBtn" class="btn btn-default" type="submit">Byd!</button>
-                    </span>
+
+                        </span>
                     </div>
+                    {% endif %}
                 </form>
 
             </div>
@@ -132,8 +135,8 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <a class="thumbnail">
-                    <img data-id='' style="" class="thumbnail-img" src="{{ primary_image }}" />
+                <a class=" thumbnail">
+                    <img id="bigImg" data-id='' style="" class="thumbnail-img" src="{{ primary_image }}" />
                 </a>
             </div>
         </div>
@@ -141,7 +144,7 @@
             {% for image in images %}
             <div class="col-xs-3 col-md-3">
                 <a class="thumbnail">
-                    <img data-id='' style="" class="thumbnail-img" src="{{ image.image }}" />
+                    <img data-id='' style="" class="small-img-mouseover thumbnail-img" src="{{ image.image }}" />
                 </a>
             </div>
             {% endfor %}
@@ -195,7 +198,12 @@
                 alert("Dit Bud skal være minimum " + minPrice + " DKK");
             }
 
-        })
+        });
+        $('.small-img-mouseover').mouseenter(function (e) {
+
+            $('#bigImg').attr('src', $(this).attr('src'));
+
+        });
     });
 
 </script>

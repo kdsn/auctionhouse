@@ -10,7 +10,7 @@ else
 
 
 
-if (User::permissions('admin'))
+if (User::permissions('admin') || User::permissions('staff'))
 {
 
     $data = Auction::getLatestAuctions();
@@ -25,8 +25,14 @@ if (User::permissions('admin'))
     ));
 }else {
 
+    $data = null;
 
-    $data = Auction::getLatestAuctions();
+    if(!isset($_GET['search'])){
+        $data = Auction::getLatestAuctions();
+    }else{
+        $data = Auction::getLatestFromSearch($_GET['search']);
+    }
+
 
     foreach ($data as $auction) {
         $auction->start_price = getCorrectMoneyFormat($auction->start_price);
