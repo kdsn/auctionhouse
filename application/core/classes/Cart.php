@@ -35,7 +35,7 @@ class Cart
     public function removeFromCart ($pid)
     {
         $i = 0;
-        if (Session::count('cart') < 2)
+        if (Session::count('cart') == 1 && $_SESSION["cart"][0]["quantity"] == 1)
         {
             Session::delete('cart');
         }
