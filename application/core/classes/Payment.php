@@ -1,12 +1,11 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: kdsn
- * Date: 22/03/2017
- * Time: 20.04
- */
 class Payment
 {
+    public static function btToken()
+    {
+        $token = ['token' => Braintree_ClientToken::generate()];
+        return json_encode($token);
+    }
 
 }

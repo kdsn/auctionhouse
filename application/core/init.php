@@ -11,7 +11,7 @@ require '../application/core/functions.php';
 /** @noinspection PhpIncludeInspection */
 App::bind('config', require '../application/core/config.php');
 
-require '../application/core/braintree.php';
+//require '../application/core/braintree.php';
 
 // skal fjernes når alle sider er genmgået for gl. qb
 App::bind('database', new QueryBuilder(

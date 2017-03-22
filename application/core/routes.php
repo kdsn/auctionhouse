@@ -57,3 +57,6 @@ if (User::permissions('admin'))
 // Fejl router.
 $router->get('403', '../application/controllers/errors.php');
 $router->get('404', '../application/controllers/errors.php');
+
+// Interne app router.
+$router->get('braintree', '../application/controllers/errors.php');
