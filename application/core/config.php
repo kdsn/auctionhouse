@@ -36,5 +36,3 @@ return [
         'cost'    => '12'
     ]
 ];
-
-Braintree_Configuration::environment('sandbox');
