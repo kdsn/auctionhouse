@@ -21,7 +21,7 @@
 
 LOCK TABLES `USER` WRITE;
 /*!40000 ALTER TABLE `USER` DISABLE KEYS */;
-INSERT INTO `USER` VALUES (1,'admin','$2y$10$aBCMAApR/bhlpTn/kvHgyujyzWF2LOpU/he6/r07yiccOFI76wr3S','admin',0,'2017-03-07 14:42:20','2017-03-07 14:42:20'),(2,'staff','$2y$10$aBCMAApR/bhlpTn/kvHgyujyzWF2LOpU/he6/r07yiccOFI76wr3S','staff',0,'2017-03-07 19:39:35','2017-03-07 19:39:35'),(3,'user','$2y$10$mxrRE1aOzJjOv6zT866bBu3PRDAhgbnVTiB6.f7eCKmQTHeuOFqyK','user',0,'2017-03-20 11:31:17','0000-00-00 00:00:00');
+INSERT INTO `USER` (`id`, `username`, `password`, `permissions`, `inactive`, `created_at`, `updated_at`) VALUES (1,'admin','$2y$10$aBCMAApR/bhlpTn/kvHgyujyzWF2LOpU/he6/r07yiccOFI76wr3S','admin',0,'2017-03-07 14:42:20','2017-03-07 14:42:20'),(2,'staff','$2y$10$aBCMAApR/bhlpTn/kvHgyujyzWF2LOpU/he6/r07yiccOFI76wr3S','staff',0,'2017-03-07 19:39:35','2017-03-07 19:39:35'),(3,'user','$2y$10$mxrRE1aOzJjOv6zT866bBu3PRDAhgbnVTiB6.f7eCKmQTHeuOFqyK','user',0,'2017-03-20 11:31:17','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `USER` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -31,7 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `USER_INFO` WRITE;
 /*!40000 ALTER TABLE `USER_INFO` DISABLE KEYS */;
-INSERT INTO `USER_INFO` VALUES (1,'admin','admin','vej 1',0,'by','test@dom.tld',0,'2017-03-21 10:11:46'),(2,'staff','staff','vej 1',0,'by','abc@dom.tld',0,'2017-03-21 10:13:21'),(3,'User','User','vej 1',0,'by','dsf@gmail.com',0,'2017-03-21 10:10:42');
+INSERT INTO `USER_INFO` (`user_id`, `first_name`, `last_name`, `address`, `zip`, `city`, `email`, `phone`, `updated_at`) VALUES (1,'admin','admin','vej 1',0,'by','test@dom.tld',0,'2017-03-21 10:11:46'),(2,'staff','staff','vej 1',0,'by','abc@dom.tld',0,'2017-03-21 10:13:21'),(3,'User','User','vej 1',0,'by','dsf@gmail.com',0,'2017-03-21 10:10:42');
 /*!40000 ALTER TABLE `USER_INFO` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -44,4 +44,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-21 11:37:21
+-- Dump completed on 2017-03-22 22:41:25
