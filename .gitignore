@@ -12,7 +12,7 @@ composer.phar
 .idea/
 
 #Added by Keld
-/application/core/config.php
+application/core/config.php
 
 # User-specific stuff:
 .idea/**/workspace.xml
