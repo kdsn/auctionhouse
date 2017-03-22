@@ -22,6 +22,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             Cart::removeFromCart($_REQUEST['sub']);
         }
 
+        if (isset ($_SESSION['cart']))
+        {
+            $i = 0;
+            $total = 0;
+            foreach ($_SESSION['cart'] as $cart)
+            {
+                $item = QB::table('PRODUCT')->where('id', $cart['item_id'])->get();
+
+                $display[$i] = [
+                    'item_id' => $cart['item_id'],
+                    'item_name' => $item[0]->title,
+                    'item_price' => $item[0]->price,
+                    'quantity' => $cart['quantity'],
+
+                ];
+                $i++;
+                $total += ($item[0]->price * $cart['quantity']);
+            }
+
+            $_token = Token::generate();
+
+            echo $twig->render('cart.view.php', array(
+                'user'      => $user,
+                'cart'      => $display,
+                'total'     => $total,
+                'token' => $_token
+            ));
+        }
+        else
+        {
+            echo $twig->render('cart.view.php', array(
+                'user'      => $user,
+                'msg'      => "Kurven er tom",
+            ));
+        }
+
+    }
+    else
+    {
+        Redirect::to('403');
+    }
+}
+else
+{
+    if (isset ($_SESSION['cart']))
+    {
         $i = 0;
         $total = 0;
         foreach ($_SESSION['cart'] as $cart)
@@ -47,38 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             'total'     => $total,
             'token' => $_token
         ));
-
     }
     else
     {
-        Redirect::to('403');
-    }
-}
-else
-{
-    $i = 0;
-    $total = 0;
-    foreach ($_SESSION['cart'] as $cart)
-    {
-        $item = QB::table('PRODUCT')->where('id', $cart['item_id'])->get();
-
-        $display[$i] = [
-            'item_id' => $cart['item_id'],
-            'item_name' => $item[0]->title,
-            'item_price' => $item[0]->price,
-            'quantity' => $cart['quantity'],
-
-        ];
-        $i++;
-        $total += ($item[0]->price * $cart['quantity']);
+        echo $twig->render('cart.view.php', array(
+            'user'      => $user,
+            'msg'      => "Kurven er tom",
+        ));
     }
 
-    $_token = Token::generate();
-
-    echo $twig->render('cart.view.php', array(
-        'user'      => $user,
-        'cart'      => $display,
-        'total'     => $total,
-        'token' => $_token
-    ));
 }

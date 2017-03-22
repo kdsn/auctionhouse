@@ -6,6 +6,7 @@
         "twig/twig": "~2.0",
         "usmanhalalit/pixie": "2.*@dev",
         "ircmaxell/random-lib": "^1.2",
-        "phpmailer/phpmailer": "^5.2"
+        "phpmailer/phpmailer": "^5.2",
+        "braintree/braintree_php": "^3.22"
     }
 }

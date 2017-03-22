@@ -21,6 +21,9 @@
 <div class="row sm-space-top-bottom">
     <div class="col-md-8 col-md-offset-2">
 
+        {% if msg %}
+            <h4 class="text-center">{{ msg }}</h4>
+        {% else %}
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -112,6 +115,8 @@
         <div class="text-center">
             <a href="#" class="btn btn-success"> Gå til betaling</a>
         </div>
+
+        {% endif %}
     </div>
 
 </div>
