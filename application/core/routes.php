@@ -5,9 +5,14 @@ $router->get('', '../application/controllers/default.php');
 $router->get('auktioner', '../application/controllers/auctionList.php');
 $router->get('auktion', '../application/controllers/auction.php');
 $router->get('shop', '../application/controllers/shop.php');
+$router->get('produkter', '../application/controllers/products.php');
 $router->get('kontakt', '../application/controllers/contact.php');
+$router->get('kurv', '../application/controllers/cart.php');
+
 
 $router->post('login', '../application/controllers/login.php');
+$router->post('produkter', '../application/controllers/products.php');
+$router->post('kurv', '../application/controllers/cart.php');
 
 // router der kræver man ikke er logget ind.
 if (!User::permissions('user') && !User::permissions('staff') && !User::permissions('admin'))

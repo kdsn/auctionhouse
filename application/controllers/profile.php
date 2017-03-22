@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 }
 else
 {
+
     $_token = Token::generate();
 
     echo $twig->render('profile.view.php', array(

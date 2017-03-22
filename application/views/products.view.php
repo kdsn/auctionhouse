@@ -16,10 +16,10 @@
 {% block content %}
 
 <div class="row sm-space-top">
-    {% for index, category in categorys %}
+    {% for index, product in products %}
 
     <div class="col-md-4">
-        {% include 'partials/item.view.php' with {item: category} %}
+        {% include 'partials/item.view.php' with {item: product} %}
     </div>
 
     {% if (index + 1) % 3 == 0 %}
