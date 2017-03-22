@@ -37,4 +37,4 @@ return [
     ]
 ];
 
-Braintree_Configuration::environment('');
+Braintree_Configuration::environment(' ');
