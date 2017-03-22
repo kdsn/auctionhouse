@@ -9,6 +9,8 @@ $router->get('produkter', '../application/controllers/products.php');
 $router->get('kontakt', '../application/controllers/contact.php');
 $router->get('kurv', '../application/controllers/cart.php');
 
+$router->get('kassen', '../application/controllers/cart.php');
+
 
 $router->post('login', '../application/controllers/login.php');
 $router->post('produkter', '../application/controllers/products.php');
