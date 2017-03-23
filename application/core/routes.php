@@ -15,6 +15,7 @@ $router->get('kassen', '../application/controllers/checkout.php');
 $router->post('login', '../application/controllers/login.php');
 $router->post('produkter', '../application/controllers/products.php');
 $router->post('kurv', '../application/controllers/cart.php');
+$router->post('kassen', '../application/controllers/checkout.php');
 
 // router der kræver man ikke er logget ind.
 if (!User::permissions('user') && !User::permissions('staff') && !User::permissions('admin'))

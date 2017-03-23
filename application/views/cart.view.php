@@ -113,7 +113,7 @@
             </tr>
         </table>
         <div class="text-center">
-            <a href="#" class="btn btn-success"> Gå til betaling</a>
+            <a href="/kassen" class="btn btn-success"> Gå til kassen</a>
         </div>
 
         {% endif %}

@@ -235,6 +235,20 @@ class User
         }
     }
 
+    public static function userInfo()
+    {
+        if (isset($_SESSION['user']))
+        {
+            $user = explode(":", $_SESSION['user']);
+            $user = $user[0];
+
+            $userInfo = QB::table('USER_INFO')->where('user_id', $user)->get();
+
+            $userInfo = $userInfo[0];
+            return $userInfo;
+        }
+    }
+
     // list users
 
 

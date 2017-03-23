@@ -60,7 +60,7 @@ class Cart
         }
     }
 
-    public function emptyCart ()
+    public function emptyCart()
     {
         Session::delete('cart');
     }
