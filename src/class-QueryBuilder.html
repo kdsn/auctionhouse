@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class QueryBuilder</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+		</div>
+
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-App.html">App</a></li>
+				<li><a href="class-Auction.html">Auction</a></li>
+				<li><a href="class-Cart.html">Cart</a></li>
+				<li><a href="class-Connection.html">Connection</a></li>
+				<li><a href="class-Cookie.html">Cookie</a></li>
+				<li><a href="class-Mailer.html">Mailer</a></li>
+				<li><a href="class-Payment.html">Payment</a></li>
+				<li class="active"><a href="class-QueryBuilder.html">QueryBuilder</a></li>
+				<li><a href="class-Redirect.html">Redirect</a></li>
+				<li><a href="class-Request.html">Request</a></li>
+				<li><a href="class-Router.html">Router</a></li>
+				<li><a href="class-Session.html">Session</a></li>
+				<li><a href="class-Shop.html">Shop</a></li>
+				<li><a href="class-Token.html">Token</a></li>
+				<li><a href="class-User.html">User</a></li>
+				<li><a href="class-Validate.html">Validate</a></li>
+			</ul>
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-dd.html">dd</a></li>
+				<li><a href="function-e.html">e</a></li>
+				<li><a href="function-exitOnError.html">exitOnError</a></li>
+				<li><a href="function-getCorrectMoneyFormat.html">getCorrectMoneyFormat</a></li>
+				<li><a href="function-hashCheck.html">hashCheck</a></li>
+				<li><a href="function-randomHash.html">randomHash</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class QueryBuilder</h1>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		
+
+			<b>Located at</b> <a href="source-class-QueryBuilder.html#6-164" title="Go to source code">core/database/QueryBuilder.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-QueryBuilder.html#10-13" title="Go to source code">__construct</a>( <span>PDO <var>$pdo</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="selectAll" id="_selectAll">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_selectAll">#</a>
+		<code><a href="source-class-QueryBuilder.html#19-40" title="Go to source code">selectAll</a>( <span> <var>$tabel</var></span>, <span> <var>$order_by</var> = <span class="php-keyword1">null</span></span>, <span> <var>$order_by_mode</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Select all records from a database table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Select all records from a database table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$tabel</var></dt>
+					<dd></dd>
+					<dt><var>$order_by</var></dt>
+					<dd></dd>
+					<dt><var>$order_by_mode</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="selectWhere" id="_selectWhere">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_selectWhere">#</a>
+		<code><a href="source-class-QueryBuilder.html#42-56" title="Go to source code">selectWhere</a>( <span> <var>$tabel</var></span>, <span> <var>$field</var></span>, <span> <var>$value</var></span> )</code>
+
+		<div class="description short">
+			<p>Select records from a database table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Select records from a database table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$tabel</var></dt>
+					<dd></dd>
+					<dt><var>$field</var></dt>
+					<dd></dd>
+					<dt><var>$value</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="selectCount" id="_selectCount">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_selectCount">#</a>
+		<code><a href="source-class-QueryBuilder.html#58-73" title="Go to source code">selectCount</a>( <span> <var>$tabel</var></span>, <span> <var>$field</var></span>, <span> <var>$value</var></span> )</code>
+
+		<div class="description short">
+			<p>Count records from a database table.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Count records from a database table.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$tabel</var></dt>
+					<dd></dd>
+					<dt><var>$field</var></dt>
+					<dd></dd>
+					<dt><var>$value</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="update" id="_update">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_update">#</a>
+		<code><a href="source-class-QueryBuilder.html#78-94" title="Go to source code">update</a>( <span> <var>$table</var></span>, <span> <var>$parameters</var></span>, <span> <var>$field</var></span>, <span> <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="insert" id="_insert">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_insert">#</a>
+		<code><a href="source-class-QueryBuilder.html#105-119" title="Go to source code">insert</a>( <span> <var>$table</var></span>, <span> <var>$parameters</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-QueryBuilder.html#132-146" title="Go to source code">delete</a>( <span> <var>$table</var></span>, <span> <var>$column</var></span>, <span> <var>$identifier</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="last_id" id="_last_id">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_last_id">#</a>
+		<code><a href="source-class-QueryBuilder.html#152-163" title="Go to source code">last_id</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="pdo" id="$pdo">
+		<td class="attributes"><code>
+			protected  
+			
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-QueryBuilder.html#8" title="Go to source code"><var>$pdo</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$pdo" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

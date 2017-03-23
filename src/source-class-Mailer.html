@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File core/classes/Mailer.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+		</div>
+
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-App.html">App</a></li>
+				<li><a href="class-Auction.html">Auction</a></li>
+				<li><a href="class-Cart.html">Cart</a></li>
+				<li><a href="class-Connection.html">Connection</a></li>
+				<li><a href="class-Cookie.html">Cookie</a></li>
+				<li><a href="class-Mailer.html">Mailer</a></li>
+				<li><a href="class-Payment.html">Payment</a></li>
+				<li><a href="class-QueryBuilder.html">QueryBuilder</a></li>
+				<li><a href="class-Redirect.html">Redirect</a></li>
+				<li><a href="class-Request.html">Request</a></li>
+				<li><a href="class-Router.html">Router</a></li>
+				<li><a href="class-Session.html">Session</a></li>
+				<li><a href="class-Shop.html">Shop</a></li>
+				<li><a href="class-Token.html">Token</a></li>
+				<li><a href="class-User.html">User</a></li>
+				<li><a href="class-Validate.html">Validate</a></li>
+			</ul>
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-dd.html">dd</a></li>
+				<li><a href="function-e.html">e</a></li>
+				<li><a href="function-exitOnError.html">exitOnError</a></li>
+				<li><a href="function-getCorrectMoneyFormat.html">getCorrectMoneyFormat</a></li>
+				<li><a href="function-hashCheck.html">hashCheck</a></li>
+				<li><a href="function-randomHash.html">randomHash</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a href="#2"> 2: </a>
+</span><span id="3" class="l"><a href="#3"> 3: </a><span class="php-keyword1">class</span> Mailer
+</span><span id="4" class="l"><a href="#4"> 4: </a>{
+</span><span id="5" class="l"><a href="#5"> 5: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> send(<span class="php-var">$recipient</span>, <span class="php-var">$subject</span>, <span class="php-var">$body</span>, <span class="php-var">$altBody</span>)
+</span><span id="6" class="l"><a href="#6"> 6: </a>    {
+</span><span id="7" class="l"><a href="#7"> 7: </a>        <span class="php-var">$mail</span> = <span class="php-keyword1">new</span> PHPMailer;
+</span><span id="8" class="l"><a href="#8"> 8: </a>
+</span><span id="9" class="l"><a href="#9"> 9: </a>        <span class="php-comment">//$mail-&gt;SMTPDebug = 3;                                         // Enable verbose debug output</span>
+</span><span id="10" class="l"><a href="#10">10: </a>
+</span><span id="11" class="l"><a href="#11">11: </a>        <span class="php-var">$mail</span>-&gt;isSMTP();                                                <span class="php-comment">// Set mailer to use SMTP</span>
+</span><span id="12" class="l"><a href="#12">12: </a>        <span class="php-var">$mail</span>-&gt;Host = App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'host'</span>];             <span class="php-comment">// Specify main and backup SMTP servers</span>
+</span><span id="13" class="l"><a href="#13">13: </a>        <span class="php-var">$mail</span>-&gt;SMTPAuth = App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'smtpauth'</span>];     <span class="php-comment">// Enable SMTP authentication</span>
+</span><span id="14" class="l"><a href="#14">14: </a>        <span class="php-var">$mail</span>-&gt;Username = App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'username'</span>];     <span class="php-comment">// SMTP username</span>
+</span><span id="15" class="l"><a href="#15">15: </a>        <span class="php-var">$mail</span>-&gt;Password = App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'password'</span>];     <span class="php-comment">// SMTP password</span>
+</span><span id="16" class="l"><a href="#16">16: </a>        <span class="php-var">$mail</span>-&gt;SMTPSecure = App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'smtpsecure'</span>]; <span class="php-comment">// Enable TLS encryption, `ssl` also accepted</span>
+</span><span id="17" class="l"><a href="#17">17: </a>        <span class="php-var">$mail</span>-&gt;Port = App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'port'</span>];             <span class="php-comment">// TCP port to connect to</span>
+</span><span id="18" class="l"><a href="#18">18: </a>
+</span><span id="19" class="l"><a href="#19">19: </a>        <span class="php-var">$mail</span>-&gt;setFrom(App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'setfrom'</span>]);        <span class="php-comment">// Afsender adresse</span>
+</span><span id="20" class="l"><a href="#20">20: </a>        <span class="php-var">$mail</span>-&gt;addAddress(<span class="php-var">$recipient</span>);                                  <span class="php-comment">// Modtager adresse</span>
+</span><span id="21" class="l"><a href="#21">21: </a>        <span class="php-var">$mail</span>-&gt;addReplyTo(App::get(<span class="php-quote">'config'</span>)[<span class="php-quote">'mailer'</span>][<span class="php-quote">'addreplyto'</span>]);  <span class="php-comment">// Svar adresse, (svar navn)</span>
+</span><span id="22" class="l"><a href="#22">22: </a>        <span class="php-var">$mail</span>-&gt;isHTML(<span class="php-keyword1">true</span>);                                            <span class="php-comment">// Sæt email format til HTML</span>
+</span><span id="23" class="l"><a href="#23">23: </a>
+</span><span id="24" class="l"><a href="#24">24: </a>        <span class="php-var">$mail</span>-&gt;Subject = <span class="php-var">$subject</span>;
+</span><span id="25" class="l"><a href="#25">25: </a>        <span class="php-var">$mail</span>-&gt;Body    = <span class="php-var">$body</span>;
+</span><span id="26" class="l"><a href="#26">26: </a>        <span class="php-var">$mail</span>-&gt;AltBody = <span class="php-var">$altBody</span>;
+</span><span id="27" class="l"><a href="#27">27: </a>
+</span><span id="28" class="l"><a href="#28">28: </a>        <span class="php-var">$mail</span>-&gt;send() ? <span class="php-keyword1">true</span> : <span class="php-keyword1">false</span>;
+</span><span id="29" class="l"><a href="#29">29: </a>    }
+</span><span id="30" class="l"><a href="#30">30: </a>}</span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?cd021bc814832c24a7cec5319ea03335bfba1caf"></script>
+<script src="elementlist.js?4e9b77be87b11668f014e4903ce6409f774426c6"></script>
+</body>
+</html>
