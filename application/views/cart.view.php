@@ -40,7 +40,9 @@
                 <td>
                     <form target="_self" method="post">
                         <input type="hidden" name="token" value="{{ token }}">
+                        <!-- Der skal sætte et filter på der kontrollere om der er flere vare på hylden -->
                         <button type="submit" name="add" value="{{ item.item_id }}" class="plain"><i class="fa fa-plus-square-o m-action" aria-hidden="true"></i></button>
+
                         <button type="submit" name="sub" value="{{ item.item_id }}" class="plain"><i class="fa fa-minus-square-o m-action" aria-hidden="true"></i></button>
                     </form>
                 </td>

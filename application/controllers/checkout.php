@@ -94,6 +94,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             );
 
             QB::table('ORDER_PIECE')->insert($data);
+
+            $data = array(
+                'order_id'  =>  $oid,
+                'price'       => $item[0]->price,
+                'product_id'  => $cart['item_id'],
+                'quantity'    => $cart['quantity']
+            );
+
+            QB::table('ORDER_PIECE')->insert($data);
+
             Cart::emptyCart();
         }
 

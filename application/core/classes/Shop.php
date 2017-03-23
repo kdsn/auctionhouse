@@ -2,10 +2,18 @@
 
 class Shop
 {
-    public function stock()
+    public function stock($pid = '')
     {
-        $stock = QB::table('PRODUCT')->select('stock_amount')->where('slug', $_REQUEST['p'])->get();
-        return $stock[0]->stock_amount;
+        if (isset($pid) && $pid != '')
+        {
+            $stock = QB::table('PRODUCT')->select('stock_amount')->where('id', $pid)->get();
+            return $stock[0]->stock_amount;
+        }
+        else
+        {
+            $stock = QB::table('PRODUCT')->select('stock_amount')->where('slug', $_REQUEST['p'])->get();
+            return $stock[0]->stock_amount;
+        }
     }
 
     public function hasLowStock()
