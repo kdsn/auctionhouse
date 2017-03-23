@@ -42,6 +42,7 @@ if (User::permissions('user') || User::permissions('staff') || User::permissions
 if (User::permissions('staff') || User::permissions('admin'))
 {
     $router->get('admin', '../application/controllers/adminDashboard.php');
+    $router->get('ordre-liste', '../application/controllers/adminOrderlist.php');
     $router->get('deleteAuction', '../application/controllers/deleteAuction.php');
     $router->get('createAuction','../application/controllers/createAuction.php');
     $router->post('createAuction','../application/controllers/createAuction.php');

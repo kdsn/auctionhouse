@@ -59,9 +59,9 @@
         <div class="container">
             <img class="navbar-left sm-space-top" src="public/images/ah-blacknblue.png" height="85px">
             <ul class="nav nav-pills navbar-right">
-                <li role="presentation"><a href="/">Dashboard</a></li>
+                <li role="presentation"><a href="/admin">Dashboard</a></li>
                 <li role="presentation"><a href="/">CMS</a></li>
-                <li role="presentation"><a href="/">Shop</a></li>
+                <li role="presentation"><a href="/ordre-liste">Shop</a></li>
                 <li role="presentation"><a href="/">Auktioner</a></li>
                 <li role="presentation"><a href="/">Brugere</a></li>
             </ul>
