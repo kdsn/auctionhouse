@@ -128,44 +128,47 @@ class User
 
         $user = QB::table('USER')->where('username', $username)->get();
 
-        $hash = $user[0]->password;
-        $id = $user[0]->id;
-
-        if (password_verify($password, $hash))
+        if (isset ($user[0]) && $user[0] != "")
         {
+            $hash = $user[0]->password;
+            $id = $user[0]->id;
 
-            if (password_needs_rehash($hash, PASSWORD_DEFAULT, [App::get('config')['hashing']['cost']]))
+            if (password_verify($password, $hash))
             {
-                $newHash = password_hash($fields['password'], PASSWORD_DEFAULT, [App::get('config')['hashing']['cost']]);
 
-                $data = array(
-                    'password'    => $newHash
-                );
+                if (password_needs_rehash($hash, PASSWORD_DEFAULT, [App::get('config')['hashing']['cost']]))
+                {
+                    $newHash = password_hash($fields['password'], PASSWORD_DEFAULT, [App::get('config')['hashing']['cost']]);
 
-                QB::table('USER')->where('id', $id)->update($data);
+                    $data = array(
+                        'password'    => $newHash
+                    );
+
+                    QB::table('USER')->where('id', $id)->update($data);
+                }
+
+                if ($remember === true)
+                {
+                    $remember_identifier = randomHash(128);
+                    $remember_token = randomHash(128);
+
+                    $data = array(
+                        'user_id'               => $id,
+                        'remember_identifier'   => $remember_identifier,
+                        'remember_token'        => hash('whirlpool', $remember_token)
+                    );
+                    QB::table('USER_HASH')->insert($data);
+
+                    Cookie::put(
+                        App::get('config')['auth']['cookie_name'],
+                        "{$remember_identifier}___{$remember_token}",
+                        App::get('config')['auth']['cookie_expiry']
+                    );
+                }
+
+                Session::put(App::get('config')['session']['session_name'], $id . ":" . crc32($user[0]->permissions));
+                Redirect::to('#');
             }
-
-            if ($remember === true)
-            {
-                $remember_identifier = randomHash(128);
-                $remember_token = randomHash(128);
-
-                $data = array(
-                    'user_id'               => $id,
-                    'remember_identifier'   => $remember_identifier,
-                    'remember_token'        => hash('whirlpool', $remember_token)
-                );
-                QB::table('USER_HASH')->insert($data);
-
-                Cookie::put(
-                    App::get('config')['auth']['cookie_name'],
-                    "{$remember_identifier}___{$remember_token}",
-                    App::get('config')['auth']['cookie_expiry']
-                );
-            }
-
-            Session::put(App::get('config')['session']['session_name'], $id . ":" . crc32($user[0]->permissions));
-            Redirect::to('#');
         }
         else
         {
